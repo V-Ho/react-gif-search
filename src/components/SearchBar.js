@@ -3,7 +3,7 @@ import React from 'react'
 class SearchBar extends React.Component {
   constructor() {
     super()
-    this.state = { term: ''}
+    this.state = { term: ''}  //initialise state with empty string, which we'll update through the input field
   }
 
   onInputChange(term) {
@@ -22,3 +22,11 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar
+
+/*
+Everytime we update our input, onChange event automatically fires and passes the input value to onInputChange()
+
+We pass data from our child component SearchBar to parent App through props(term)
+
+
+*/
