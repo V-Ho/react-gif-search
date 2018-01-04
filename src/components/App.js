@@ -1,8 +1,26 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar'
+import SearchBar from './SearchBar'
+import GifList from './GifList'
 // import './App.css';
 
 class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      gifs: [
+        { id: 1,
+          url: 'www.fakeurl.com/1'
+        },
+        { id: 2,
+          url: 'www.fakeurl.com/2'
+        },
+        { id: 3,
+          url: 'www.fakeurl.com/3'
+        }
+      ]
+    }
+  }
+
   handleTermChange(term) {
     console.log(term)
   }
@@ -11,6 +29,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar onTermChange={this.handleTermChange}/>
+        <GifList gifs={this.state.gifs}/>
       </div>
     )
   }
@@ -28,5 +47,6 @@ event object as argument to onInputChange
 - SearchBar's onInputChange calls this.setState to update the state's term property,
 and also calls handleTermChange which is passed through the onTermChange prop
 
+- App passes data to GifList via props
 
 */
