@@ -1,28 +1,31 @@
 import React from 'react';
 import SearchBar from './SearchBar'
 import GifList from './GifList'
+import axios from 'axios'
 // import './App.css';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      gifs: [
-        { id: 1,
-          url: 'www.fakeurl.com/1'
-        },
-        { id: 2,
-          url: 'www.fakeurl.com/2'
-        },
-        { id: 3,
-          url: 'www.fakeurl.com/3'
-        }
-      ]
+      gifs: []
     }
+
+    // this.handleTermChange = this.handleTermChange.bind(this)
   }
 
   handleTermChange(term) {
-    console.log(term)
+
+    axios.get('http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC')
+
+      // .catch(error => {
+      //   console.log('error :', error)
+      // })
+      .then(res => {
+        console.log(res.data.data[0].images)
+      })
+    console.log('term', term)
+
   }
 
   render() {
